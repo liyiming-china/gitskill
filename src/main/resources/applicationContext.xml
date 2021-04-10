@@ -16,49 +16,5 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context ">
-    <!-- 容器自动创建被调用的对象-->
 
-    <bean id = "chinese" class="bean.impl.Chinese" init-method="init">
-
-        <property name="name" value="张三"/>
-        <property name="cup" ref="paperCup"/>
-
-    </bean>
-    <bean id ="paperCup" class="bean.impl.PaperCup">
-        <property name="color" value="白" />
-    </bean>
-    <bean id ="glassCup" class="bean.impl.GlassCup">
-        <property name="color" value="黑" />
-    </bean>
-    <bean id="beanPostProcessor" class="bean.MyBeanPostProcessor" scope=""/>
-    <bean class="bean.MyBeanFactoryPostProcessor"/>
-
-    <bean id ="admin" class="aop.User">
-        <property name="username" value="admin" />
-    </bean>
-    <bean id ="register" class="aop.User">
-        <property name="username" value="register" />
-    </bean>
-    <bean id ="other" class="aop.User">
-        <property name="username" value="other" />
-    </bean>
-
-    <bean id ="serviceTarget" class="aop.Impl.UserDaoImpl"/>
-    <bean id ="logInterceptor" class="aop.LogInterceptor"/>
-    <bean id ="authorityInterceptor" class="aop.AuthorityInterceptor">
-        <property name="user" ref="register"/>
-    </bean>
-    <bean id="service" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="proxyInterfaces" value="aop.UserDao"/>
-        <property name="target" ref="serviceTarget"/>
-        <property name="interceptorNames">
-            <list>
-                <value>authorityInterceptor</value>
-                <value>logInterceptor</value>
-            </list>
-        </property>
-    </bean>
-    <bean id="test" class="aop.Impl.UserServiceImpl">
-        <property name="testDao" ref="service"/>
-    </bean>
 </beans>
