@@ -14,7 +14,7 @@ public class CalTest {
     @Test
     public void shouldReturn0(){
         Cal cal = new Cal();
-        int s = cal.compute(1,1,'+');
+        int s = cal.compute(1,1,'-');
         int v = 0;
         Assert.assertEquals(v, s);
     }
