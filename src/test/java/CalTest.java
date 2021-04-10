@@ -18,4 +18,12 @@ public class CalTest {
         int v = 0;
         Assert.assertEquals(v, s);
     }
+
+    @Test
+    public void shouldReturn1() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
+        Cal cal = new Cal();
+        int s = cal.compute(1,1,"Multi");
+        int v = 1;
+        Assert.assertEquals(v, s);
+    }
 }
